@@ -96,7 +96,7 @@ async function announceStatus(message, speak = false) {
 async function speakText(text) {
   try {
     // Split text into sentences for streaming
-    const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+    const sentences = text.match(/[^.!?]+[.!?]+(?=\s|$)/g) || [text];
     
     for (const sentence of sentences) {
       const trimmed = sentence.trim();
