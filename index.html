@@ -15,7 +15,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   background: white;
   color: black;
-  padding: 24px;
+  padding: 16px;
   line-height: 1.6;
   min-height: 100vh;
 }
@@ -31,11 +31,11 @@ body {
   left: 0;
   background: black;
   color: white;
-  padding: 16px 24px;
+  padding: 12px 20px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  border: 4px solid #fbbf24;
+  border: 3px solid #fbbf24;
   z-index: 100;
 }
 
@@ -45,19 +45,20 @@ body {
 }
 
 header {
-  margin-bottom: 40px;
-  padding-bottom: 24px;
-  border-bottom: 4px solid black;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid black;
 }
 
 h1 {
-  font-size: 48px;
+  font-size: clamp(28px, 6vw, 48px);
   font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  line-height: 1.2;
 }
 
 .subtitle {
-  font-size: 24px;
+  font-size: clamp(18px, 4vw, 24px);
   color: #374151;
   margin-top: 8px;
 }
@@ -77,52 +78,59 @@ h1 {
 .breadcrumb {
   background: #111827;
   color: white;
-  padding: 20px 32px;
+  padding: 16px 20px;
   border-radius: 8px;
-  margin-bottom: 32px;
-  font-size: 22px;
+  margin-bottom: 20px;
+  font-size: clamp(18px, 4vw, 22px);
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 12px;
-  border: 4px solid black;
+  gap: 8px;
+  border: 3px solid black;
+  flex-wrap: wrap;
 }
 
 .breadcrumb-arrow {
-  font-size: 28px;
+  font-size: clamp(20px, 5vw, 28px);
 }
 
 .class-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
 }
 
 .class-button {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
-  padding: 48px 32px;
-  font-size: 32px;
+  padding: 32px 24px;
+  font-size: clamp(24px, 5vw, 32px);
   font-weight: bold;
-  border: 6px solid #1e40af;
+  border: 4px solid #1e40af;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s;
   text-align: center;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.class-button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.4);
+.class-button:hover,
+.class-button:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.4);
   background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
 }
 
 .class-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .class-button::before {
@@ -137,24 +145,44 @@ h1 {
 
 .control-section {
   background: #f3f4f6;
-  padding: 24px;
+  padding: 16px;
   border-radius: 8px;
-  margin-bottom: 24px;
-  border: 4px solid #1f2937;
+  margin-bottom: 20px;
+  border: 3px solid #1f2937;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .control-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .back-button, .help-button {
-  padding: 20px 32px;
-  font-size: 22px;
+  padding: 16px 24px;
+  font-size: clamp(18px, 4vw, 22px);
   font-weight: bold;
   border-radius: 8px;
-  border: 4px solid;
+  border: 3px solid;
   cursor: pointer;
   transition: all 0.2s;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  margin-right: 16px;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 56px;
+}
+
+@media (min-width: 640px) {
+  .back-button, .help-button {
+    width: auto;
+    flex: 1;
+    min-width: 200px;
+  }
 }
 
 .back-button {
@@ -163,7 +191,8 @@ h1 {
   border-color: #4b5563;
 }
 
-.back-button:hover {
+.back-button:hover,
+.back-button:focus {
   background: #4b5563;
 }
 
@@ -173,57 +202,66 @@ h1 {
   border-color: #059669;
 }
 
-.help-button:hover {
+.help-button:hover,
+.help-button:focus {
   background: #059669;
 }
 
 .back-button:focus, .help-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .section {
   background: #f3f4f6;
-  padding: 32px;
+  padding: 20px;
   border-radius: 8px;
-  margin-bottom: 32px;
-  border: 4px solid #1f2937;
+  margin-bottom: 20px;
+  border: 3px solid #1f2937;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 24px;
+  }
 }
 
 .section-dark {
   background: black;
   color: white;
-  border: 4px solid black;
+  border: 3px solid black;
 }
 
 .section-title {
-  font-size: 32px;
+  font-size: clamp(24px, 5vw, 32px);
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 #status {
-  font-size: 26px;
+  font-size: clamp(20px, 4vw, 26px);
   line-height: 1.6;
   font-weight: 600;
 }
 
 .voice-button {
   width: 100%;
-  padding: 48px;
-  font-size: 28px;
+  padding: 32px 24px;
+  font-size: clamp(22px, 5vw, 28px);
   font-weight: bold;
   border-radius: 12px;
-  border: 6px solid;
+  border: 4px solid;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
   transition: all 0.3s;
+  min-height: 80px;
 }
 
 .voice-button:not(.listening):not(:disabled) {
@@ -232,7 +270,8 @@ h1 {
   border-color: #c2410c;
 }
 
-.voice-button:not(.listening):not(:disabled):hover {
+.voice-button:not(.listening):not(:disabled):hover,
+.voice-button:not(.listening):not(:disabled):focus {
   background: #ea580c;
   transform: scale(1.02);
 }
@@ -257,71 +296,85 @@ h1 {
 }
 
 .voice-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .button-hint {
   text-align: center;
-  font-size: 22px;
+  font-size: clamp(18px, 4vw, 22px);
   color: #374151;
-  margin-top: 20px;
+  margin-top: 16px;
   font-weight: 600;
 }
 
 .input-divider {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin: 32px 0;
+  gap: 12px;
+  margin: 24px 0;
 }
 
 .input-divider-line {
   flex: 1;
-  height: 4px;
+  height: 3px;
   background: #1f2937;
 }
 
 .input-divider-text {
-  font-size: 24px;
+  font-size: clamp(20px, 4vw, 24px);
   font-weight: bold;
   color: #374151;
 }
 
 .text-input-container {
   display: flex;
-  gap: 16px;
-  margin-top: 24px;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+@media (min-width: 640px) {
+  .text-input-container {
+    flex-direction: row;
+  }
 }
 
 .text-input {
   flex: 1;
-  padding: 24px;
-  font-size: 26px;
-  border: 4px solid #1f2937;
+  padding: 18px;
+  font-size: clamp(20px, 4vw, 26px);
+  border: 3px solid #1f2937;
   border-radius: 8px;
   background: white;
   color: black;
+  min-height: 56px;
 }
 
 .text-input:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .text-submit-button {
-  padding: 24px 40px;
-  font-size: 26px;
+  padding: 18px 32px;
+  font-size: clamp(20px, 4vw, 26px);
   font-weight: bold;
   background: #10b981;
   color: white;
-  border: 4px solid #059669;
+  border: 3px solid #059669;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.text-submit-button:hover:not(:disabled) {
+.text-submit-button:hover:not(:disabled),
+.text-submit-button:focus:not(:disabled) {
   background: #059669;
 }
 
@@ -333,72 +386,78 @@ h1 {
 }
 
 .text-submit-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .conversation-box {
   background: white;
-  padding: 32px;
+  padding: 20px;
   border-radius: 8px;
-  border: 4px solid #1f2937;
-  margin-bottom: 24px;
+  border: 3px solid #1f2937;
+  margin-bottom: 20px;
 }
 
 .conversation-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
 }
 
 .conversation-label {
-  font-size: 26px;
+  font-size: clamp(20px, 4vw, 26px);
   font-weight: bold;
   color: #111827;
 }
 
 .conversation-text {
-  font-size: 26px;
+  font-size: clamp(20px, 4vw, 26px);
   line-height: 1.8;
   color: black;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .repeat-button {
-  padding: 16px 28px;
-  font-size: 22px;
+  padding: 14px 24px;
+  font-size: clamp(18px, 4vw, 22px);
   font-weight: bold;
   background: #f97316;
   color: black;
-  border: 4px solid #c2410c;
+  border: 3px solid #c2410c;
   border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   transition: all 0.2s;
+  min-height: 48px;
 }
 
-.repeat-button:hover {
+.repeat-button:hover,
+.repeat-button:focus {
   background: #ea580c;
 }
 
 .repeat-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .source-info {
-  font-size: 22px;
+  font-size: clamp(18px, 4vw, 22px);
   color: #3b82f6;
-  margin-top: 16px;
+  margin-top: 12px;
   font-weight: 600;
-  padding: 16px;
+  padding: 12px;
   background: #eff6ff;
   border-radius: 6px;
-  border-left: 6px solid #3b82f6;
+  border-left: 4px solid #3b82f6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .slider-container {
@@ -407,17 +466,17 @@ h1 {
 
 .slider-label {
   display: block;
-  font-size: 26px;
+  font-size: clamp(20px, 4vw, 26px);
   font-weight: 600;
   color: #111827;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .slider {
   width: 100%;
-  height: 20px;
+  height: 16px;
   background: #d1d5db;
-  border-radius: 10px;
+  border-radius: 8px;
   outline: none;
   cursor: pointer;
   -webkit-appearance: none;
@@ -426,50 +485,55 @@ h1 {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   background: #f97316;
-  border: 4px solid #c2410c;
+  border: 3px solid #c2410c;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   background: #f97316;
-  border: 4px solid #c2410c;
+  border: 3px solid #c2410c;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .slider:focus {
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .shortcuts-list {
   list-style: none;
-  font-size: 22px;
-  line-height: 2;
+  font-size: clamp(18px, 4vw, 22px);
+  line-height: 1.8;
 }
 
 .shortcuts-list li {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   padding: 12px;
   background: rgba(255,255,255,0.1);
   border-radius: 6px;
+  word-wrap: break-word;
 }
 
 .shortcuts-list strong {
-  font-size: 26px;
+  font-size: clamp(20px, 4vw, 26px);
   color: #fbbf24;
+  display: inline-block;
+  margin-bottom: 4px;
 }
 
 .icon {
-  width: 44px;
-  height: 44px;
+  width: clamp(32px, 6vw, 44px);
+  height: clamp(32px, 6vw, 44px);
   display: inline-block;
   vertical-align: middle;
+  flex-shrink: 0;
 }
 
 .sr-only {
@@ -491,25 +555,26 @@ h1 {
 audio {
   width: 100%;
   margin-top: 16px;
-  height: 60px;
+  height: 54px;
 }
 
 .welcome-message {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
-  padding: 32px;
+  padding: 24px;
   border-radius: 12px;
-  margin-bottom: 32px;
-  border: 6px solid #1e40af;
+  margin-bottom: 24px;
+  border: 4px solid #1e40af;
 }
 
 .welcome-message h2 {
-  font-size: 36px;
-  margin-bottom: 16px;
+  font-size: clamp(26px, 5vw, 36px);
+  margin-bottom: 12px;
+  line-height: 1.3;
 }
 
 .welcome-message p {
-  font-size: 24px;
+  font-size: clamp(18px, 4vw, 24px);
   line-height: 1.8;
 }
 
@@ -517,55 +582,79 @@ audio {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
 }
 
 .conversation-count {
-  font-size: 22px;
+  font-size: clamp(18px, 4vw, 22px);
   color: #6b7280;
   font-weight: 600;
 }
 
 .chat-history {
-  padding: 16px;
+  padding: 12px;
   background: #f9fafb;
   border-radius: 8px;
-  border: 4px solid #e5e7eb;
+  border: 3px solid #e5e7eb;
+}
+
+@media (min-width: 640px) {
+  .chat-history {
+    padding: 16px;
+  }
 }
 
 .chat-message {
-  margin-bottom: 24px;
-  padding: 24px;
+  margin-bottom: 20px;
+  padding: 16px;
   border-radius: 8px;
   border: 3px solid;
   position: relative;
   cursor: pointer;
 }
 
+@media (min-width: 640px) {
+  .chat-message {
+    padding: 20px;
+  }
+}
+
 .chat-message:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
-  transform: scale(1.02);
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
+  transform: scale(1.01);
 }
 
 .chat-message-user {
   background: #eff6ff;
   border-color: #3b82f6;
-  margin-left: 48px;
+  margin-left: 0;
+}
+
+@media (min-width: 640px) {
+  .chat-message-user {
+    margin-left: 32px;
+  }
 }
 
 .chat-message-assistant {
   background: white;
   border-color: #1f2937;
-  margin-right: 48px;
+  margin-right: 0;
+}
+
+@media (min-width: 640px) {
+  .chat-message-assistant {
+    margin-right: 32px;
+  }
 }
 
 .chat-message-label {
-  font-size: 20px;
+  font-size: clamp(18px, 4vw, 20px);
   font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: #111827;
   display: flex;
   align-items: center;
@@ -573,75 +662,95 @@ audio {
 }
 
 .chat-message-text {
-  font-size: 24px;
+  font-size: clamp(20px, 4vw, 24px);
   line-height: 1.8;
   color: #1f2937;
   word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .chat-message-meta {
-  font-size: 18px;
+  font-size: clamp(16px, 3vw, 18px);
   color: #6b7280;
-  margin-top: 12px;
-  padding-top: 12px;
+  margin-top: 10px;
+  padding-top: 10px;
   border-top: 2px solid #e5e7eb;
 }
 
 .chat-source {
-  font-size: 20px;
+  font-size: clamp(18px, 4vw, 20px);
   color: #3b82f6;
-  margin-top: 12px;
+  margin-top: 10px;
   font-weight: 600;
-  padding: 12px;
+  padding: 10px;
   background: #eff6ff;
   border-radius: 6px;
   border-left: 4px solid #3b82f6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .welcome-chat-message {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
-  padding: 24px;
+  padding: 20px;
   border-radius: 8px;
-  margin-bottom: 24px;
-  border: 4px solid #1e40af;
+  margin-bottom: 20px;
+  border: 3px solid #1e40af;
 }
 
 .welcome-chat-message .chat-message-text {
   color: white;
-  font-size: 22px;
+  font-size: clamp(18px, 4vw, 22px);
 }
 
 .input-section {
   background: white;
-  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 24px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
 .input-controls {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  gap: 12px;
   align-items: stretch;
 }
 
+@media (min-width: 768px) {
+  .input-controls {
+    flex-direction: row;
+  }
+}
+
 .voice-button-compact {
-  padding: 20px 28px;
-  font-size: 20px;
+  padding: 16px 20px;
+  font-size: clamp(18px, 4vw, 20px);
   font-weight: bold;
   border-radius: 8px;
-  border: 4px solid;
+  border: 3px solid;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 10px;
   transition: all 0.2s;
   flex-shrink: 0;
   background: #f97316;
   color: black;
   border-color: #c2410c;
+  min-height: 56px;
+  width: 100%;
 }
 
-.voice-button-compact:hover:not(:disabled) {
+@media (min-width: 768px) {
+  .voice-button-compact {
+    width: auto;
+  }
+}
+
+.voice-button-compact:hover:not(:disabled),
+.voice-button-compact:focus:not(:disabled) {
   background: #ea580c;
 }
 
@@ -660,48 +769,68 @@ audio {
 }
 
 .voice-button-compact:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .text-input-wrapper {
   flex: 1;
   display: flex;
+  flex-direction: column;
   gap: 12px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .text-input-wrapper {
+    flex-direction: row;
+  }
 }
 
 .text-input-compact {
   flex: 1;
-  padding: 20px;
-  font-size: 22px;
-  border: 4px solid #1f2937;
+  padding: 16px;
+  font-size: clamp(18px, 4vw, 22px);
+  border: 3px solid #1f2937;
   border-radius: 8px;
   background: white;
   color: black;
+  min-height: 56px;
+  width: 100%;
 }
 
 .text-input-compact:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .text-submit-button-compact {
-  padding: 20px 32px;
-  font-size: 20px;
+  padding: 16px 28px;
+  font-size: clamp(18px, 4vw, 20px);
   font-weight: bold;
   background: #10b981;
   color: white;
-  border: 4px solid #059669;
+  border: 3px solid #059669;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   flex-shrink: 0;
+  min-height: 56px;
+  width: 100%;
 }
 
-.text-submit-button-compact:hover:not(:disabled) {
+@media (min-width: 640px) {
+  .text-submit-button-compact {
+    width: auto;
+  }
+}
+
+.text-submit-button-compact:hover:not(:disabled),
+.text-submit-button-compact:focus:not(:disabled) {
   background: #059669;
 }
 
@@ -713,8 +842,8 @@ audio {
 }
 
 .text-submit-button-compact:focus {
-  outline: none;
-  box-shadow: 0 0 0 8px #fbbf24;
+  outline: 4px solid #fbbf24;
+  outline-offset: 2px;
 }
 
 .settings-section, .shortcuts-section {
@@ -727,6 +856,7 @@ audio {
   display: flex;
   align-items: center;
   gap: 12px;
+  padding: 8px 0;
 }
 
 .settings-toggle:hover {
@@ -741,9 +871,46 @@ audio {
 
 details[open] .settings-toggle::after {
   content: ' (Click to collapse)';
-  font-size: 18px;
+  font-size: clamp(16px, 3vw, 18px);
   color: #9ca3af;
   font-weight: normal;
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+  button, .class-button, input, select {
+    min-height: 48px;
+  }
+  
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  * {
+    border-width: 3px !important;
+  }
+  
+  .class-button,
+  .voice-button,
+  .back-button,
+  .help-button {
+    border-width: 4px !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 </style>
 
@@ -782,20 +949,15 @@ details[open] .settings-toggle::after {
         <button id="class6Button" class="class-button" aria-label="Class 6 Science. Click to start">
           <span>Class 6 Science</span>
         </button>
-      </div>
 
-      <div class="class-grid" role="list" aria-label="Select your class">
         <button id="class7Button" class="class-button" aria-label="Class 7 Science. Click to start">
           <span>Class 7 Science</span>
         </button>
-      </div>
 
-      <div class="class-grid" role="list" aria-label="Select your class">
         <button id="class9Button" class="class-button" aria-label="Class 9 Science. Click to start">
           <span>Class 9 Science</span>
         </button>
       </div>
-      
     </div>
 
     <!-- PAGE 2: Assistant -->
@@ -825,109 +987,107 @@ details[open] .settings-toggle::after {
         <div class="section-title">
           <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
-          </svg>
-          <span>Status</span>
-        </div>
-        <p id="status">Loading models...</p>
+</svg>
+<span>Status</span>
+</div>
+<p id="status">Loading models...</p>
+</div>
+<!-- Chat History Section -->
+  <div class="section" role="region" aria-label="Chat History">
+    <div class="section-header">
+      <h2 class="section-title">Conversation History</h2>
+      <p class="conversation-count" id="conversationCount" aria-live="polite">0 messages</p>
+    </div> 
+
+    <div id="chatHistory" class="chat-history" role="log" aria-live="polite" aria-atomic="false" aria-relevant="additions">
+      <div class="welcome-chat-message" tabindex="0" role="article" aria-label="Welcome message: Welcome! Ask me any question about your science textbook. I can help you understand concepts, explain diagrams, and answer follow-up questions.">
+        <p class="chat-message-text" aria-hidden="true">👋 Welcome! Ask me any question about your science textbook. I can help you understand concepts, explain diagrams, and answer follow-up questions.</p>
       </div>
-
-      <!-- Chat History Section -->
-      <div class="section" role="region" aria-label="Chat History">
-        <div class="section-header">
-          <h2 class="section-title">Conversation History</h2>
-          <p class="conversation-count" id="conversationCount" aria-live="polite">0 messages</p>
-        </div> 
-
-        <div id="chatHistory" class="chat-history" role="log" aria-live="polite" aria-atomic="false" aria-relevant="additions">
-          <div class="welcome-chat-message" tabindex="0" role="article" aria-label="Welcome message: Welcome! Ask me any question about your science textbook. I can help you understand concepts, explain diagrams, and answer follow-up questions.">
-            <p class="chat-message-text" aria-hidden="true">👋 Welcome! Ask me any question about your science textbook. I can help you understand concepts, explain diagrams, and answer follow-up questions.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Input Section -->
-      <div class="section input-section" aria-label="Ask a question">
-        <h2 class="section-title">Ask Your Question</h2>
-        
-        <div class="input-controls">
-          <button id="voiceButton" class="voice-button-compact" disabled aria-label="Record voice question. Press Space">
-            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
-            </svg>
-            <span id="buttonText">RECORD (Space)</span>
-          </button>
-
-          <div class="text-input-wrapper">
-            <label for="textInput" class="sr-only">Type your question here</label>
-            <input 
-              type="text" 
-              id="textInput" 
-              class="text-input-compact" 
-              placeholder="Type your question or press Space to speak..."
-              aria-label="Type your question"
-              disabled
-            >
-            <button id="textSubmit" class="text-submit-button-compact" aria-label="Submit question. Press Enter" disabled>
-              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
-              <span>SEND</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Settings collapsed -->
-      <details class="section settings-section">
-        <summary class="section-title settings-toggle" aria-label="Settings. Click to expand">
-          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-          </svg>
-          Settings
-        </summary>
-        <div class="settings-content">
-          <div class="slider-container">
-            <label for="speechRate" class="slider-label">Speech Rate: <span id="rateValue">1.0</span>x</label>
-            <input 
-              type="range" 
-              id="speechRate" 
-              class="slider" 
-              min="0.5" 
-              max="2.0" 
-              step="0.1" 
-              value="1.0"
-              aria-label="Adjust speech rate from 0.5 to 2.0 times normal speed"
-            >
-          </div>
-        </div>
-      </details>
-
-      <!-- Keyboard shortcuts collapsed -->
-      <details class="section section-dark shortcuts-section">
-        <summary class="section-title settings-toggle" aria-label="Keyboard shortcuts. Click to expand">
-          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
-          </svg>
-          Keyboard Shortcuts
-        </summary>
-        <ul class="shortcuts-list">
-          <li><strong>Space:</strong> Start/stop voice recording</li>
-          <li><strong>Enter:</strong> Submit text question</li>
-          <li><strong>Control + R:</strong> Repeat last message</li>
-          <li><strong>Control + Delete:</strong> Clear chat history</li>
-          <li><strong>Escape:</strong> Return to home</li>
-          <li><strong>Control + H:</strong> Hear help</li>
-        </ul>
-      </details>
-      
-      <audio id="audio" controls style="display:none" aria-label="Audio playback"></audio>
     </div>
-  </main>
+  </div>
+
+  <!-- Input Section -->
+  <div class="section input-section" aria-label="Ask a question">
+    <h2 class="section-title">Ask Your Question</h2>
+    
+    <div class="input-controls">
+      <button id="voiceButton" class="voice-button-compact" disabled aria-label="Record voice question. Press Space">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+        </svg>
+        <span id="buttonText">RECORD (Space)</span>
+      </button>
+
+      <div class="text-input-wrapper">
+        <label for="textInput" class="sr-only">Type your question here</label>
+        <input 
+          type="text" 
+          id="textInput" 
+          class="text-input-compact" 
+          placeholder="Type your question or press Space to speak..."
+          aria-label="Type your question"
+          disabled
+        >
+        <button id="textSubmit" class="text-submit-button-compact" aria-label="Submit question. Press Enter" disabled>
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+          <span>SEND</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings collapsed -->
+  <details class="section settings-section">
+    <summary class="section-title settings-toggle" aria-label="Settings. Click to expand">
+      <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+      </svg>
+      Settings
+    </summary>
+    <div class="settings-content">
+      <div class="slider-container">
+        <label for="speechRate" class="slider-label">Speech Rate: <span id="rateValue">1.0</span>x</label>
+        <input 
+          type="range" 
+          id="speechRate" 
+          class="slider" 
+          min="0.5" 
+          max="2.0" 
+          step="0.1" 
+          value="1.0"
+          aria-label="Adjust speech rate from 0.5 to 2.0 times normal speed"
+        >
+      </div>
+    </div>
+  </details>
+
+  <!-- Keyboard shortcuts collapsed -->
+  <details class="section section-dark shortcuts-section">
+    <summary class="section-title settings-toggle" aria-label="Keyboard shortcuts. Click to expand">
+      <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+      </svg>
+      Keyboard Shortcuts
+    </summary>
+    <ul class="shortcuts-list">
+      <li><strong>Space:</strong> Start/stop voice recording</li>
+      <li><strong>Enter:</strong> Submit text question</li>
+      <li><strong>Control + R:</strong> Repeat last message</li>
+      <li><strong>Control + Delete:</strong> Clear chat history</li>
+      <li><strong>Escape:</strong> Return to home</li>
+      <li><strong>Control + H:</strong> Hear help</li>
+    </ul>
+  </details>
+  
+  <audio id="audio" controls style="display:none" aria-label="Audio playback"></audio>
 </div>
 
+  </main>
+</div>
 <div id="announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
-
 <script src="app.js"></script>
 </body>
-</html
+</html>
