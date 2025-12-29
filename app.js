@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = 'https://35eeec13964a.ngrok-free.app/api';
+const API_BASE_URL = 'https://gretchen-soritical-donn.ngrok-free.dev/api';
 
 // DOM Elements
 const classSelectionPage = document.getElementById('classSelectionPage');
